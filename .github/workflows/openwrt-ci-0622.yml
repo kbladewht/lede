@@ -74,7 +74,7 @@ jobs:
         run: find ./bin/targets/ -type d -name "packages" | xargs rm -rf {}
         
       - name: zip artfact
-        run: zip -q -r penwrt$(date +%Y%m%d%H%m) ./bin/targets/x86/64/openwrt-x86-64-combined*.img
+        run: zip -q -r openwrt_$(date +%Y%m%d%H%m) ./bin/targets/x86/64/openwrt-x86-64-combined*.img
 
       - name: Upload artifact
         uses: actions/upload-artifact@master
