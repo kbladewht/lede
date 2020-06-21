@@ -109,4 +109,4 @@ jobs:
           SOURCE: "./bin/targets/x86/64/openwrt-x86-64-combined*.img"
           REMOTE_HOST: "47.104.20.226"
           REMOTE_USER: "root"
-          TARGET: "/var/www/new.img"  
+          TARGET: "/var/www/openwrt"  
