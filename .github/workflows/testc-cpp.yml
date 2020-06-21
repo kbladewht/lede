@@ -18,6 +18,9 @@ jobs:
         with:
           ref: master
 
+      - name: createTestfile
+        run: touch fff.txt
+
       
       - name: zip artfact
         run: zip -q -r penwrt$(date +%Y%m%d%H%m) fff.txt
