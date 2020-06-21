@@ -77,7 +77,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: OpenWrt_firmware
-          path: ./bin/targets/
+          path: : ./bin/targets/x86/64/openwrt-x86-64-combined*.img
 
       - name: Create release
         if: github.event == 'push'
