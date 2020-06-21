@@ -1,0 +1,39 @@
+name: test-CI-test
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+
+  build_openwrt:
+
+    name: Build OpenWrt and release
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+
+      
+      - name: zip artfact
+        run: zip -q -r penwrt$(date +%Y%m%d%H%m) fff.txt
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: OpenWrt_firmware_kbalde
+          path: ./openwrt*.zip
+
+      - name: Deploy aliyun
+        uses: easingthemes/ssh-deploy@v2.1.2
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.DEPLOYKEYALIYUN }}
+          ARGS: "-avz --delete"
+          SOURCE: "./openwrt*.zip"
+          REMOTE_HOST: "47.104.20.226"
+          REMOTE_USER: "root"
+          TARGET: "/var/www/" 
