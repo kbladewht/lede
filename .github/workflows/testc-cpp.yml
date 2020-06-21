@@ -19,18 +19,16 @@ jobs:
           ref: master
 
       - name: createTestfile
-        run: touch fff.txt
+        run: |
+          touch fff.txt
+          
 
       
       - name: zip artfact
-        run: zip -q -r penwrt$(date +%Y%m%d%H%m) fff.txt
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@master
-        with:
-          name: OpenWrt_firmware_kbalde
-          path: ./openwrt*.zip
-
+        run: |
+          zip -q -r openwrt$(date +%Y%m%d%H%m) fff.txt
+          ls -ltr
+  
       - name: Deploy aliyun
         uses: easingthemes/ssh-deploy@v2.1.2
         env:
