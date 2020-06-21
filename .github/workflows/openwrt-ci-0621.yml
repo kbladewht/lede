@@ -100,3 +100,13 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./bin/targets/x86/64/openwrt-x86-64-combined*.img
+    # Deploy
+      - name: Deploy aliyun
+        uses: easingthemes/ssh-deploy@v2.0.7
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ACCESS_TOKEN }}
+          ARGS: "-avz --delete"
+          SOURCE: "./bin/targets/x86/64/openwrt-x86-64-combined*.img"
+          REMOTE_HOST: "47.104.20.226"
+          REMOTE_USER: "root"
+          TARGET: "/var/www/new.img"  
