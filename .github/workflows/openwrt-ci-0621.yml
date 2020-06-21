@@ -74,12 +74,12 @@ jobs:
         run: find ./bin/targets/ -type d -name "packages" | xargs rm -rf {}
         
       - name: zip artfact
-        run: zip -q -r openwrt$ ./bin/targets/x86/64/openwrt-x86-64-combined*.img
+        run: zip -q -r openwrt ./bin/targets/x86/64/openwrt-x86-64-combined*.img
 
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
-          name: OpenWrt_firmware_zip
+          name: OpenWrt_firmware_kbalde
           path: ./openwrt.zip
 
       - name: Deploy aliyun
