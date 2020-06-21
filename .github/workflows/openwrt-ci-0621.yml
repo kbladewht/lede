@@ -48,7 +48,8 @@ jobs:
           ./scripts/feeds install -a
 
       - name: Generate configuration file
-        run: make defconfig
+        run: |
+             make defconfig
              cp package/.config .
              ls -ltr
 
