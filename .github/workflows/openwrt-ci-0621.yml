@@ -104,7 +104,7 @@ jobs:
       - name: Deploy aliyun
         uses: easingthemes/ssh-deploy@v2.0.7
         env:
-          SSH_PRIVATE_KEY: ${{ DEPLOYKEYALIYUN }}
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
           ARGS: "-avz --delete"
           SOURCE: "./bin/targets/x86/64/openwrt-x86-64-combined*.img"
           REMOTE_HOST: "47.104.20.226"
